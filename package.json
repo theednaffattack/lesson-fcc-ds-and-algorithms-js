@@ -9,6 +9,7 @@
   "scripts": {
     "stack": "node src/stack.js",
     "set": "node src/set.js",
+    "priority-queue": "node src/priority-queue.js",
     "queue": "node src/queue.js"
   },
   "devDependencies": {
