@@ -1,4 +1,7 @@
 /* Priority Queue! */
+// REMINDER: A queue is a first in first out (FIFO)
+// data structure.
+
 // You pass an element into the queue along with a priority
 // Elements with a higher priority are sent to the...
 // beginning of the queue.
