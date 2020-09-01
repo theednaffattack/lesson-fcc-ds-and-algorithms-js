@@ -10,7 +10,8 @@
     "stack": "node src/stack.js",
     "set": "node src/set.js",
     "priority-queue": "node src/priority-queue.js",
-    "queue": "node src/queue.js"
+    "queue": "node src/queue.js",
+    "binary-search": "node src/binary-search-tree.js"
   },
   "devDependencies": {
     "eslint": "^7.7.0"
