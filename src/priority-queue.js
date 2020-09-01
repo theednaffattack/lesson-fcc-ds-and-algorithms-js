@@ -52,11 +52,14 @@ function PriorityQueue() {
   this.front = function () {
     return collection[0];
   };
-  this.size = function () {
-    return collection.length;
-  };
   this.isEmpty = function () {
     return collection.length === 0;
+  };
+  this.print = function () {
+    console.log(collection);
+  };
+  this.size = function () {
+    return collection.length;
   };
 }
 
@@ -68,7 +71,7 @@ pq.enqueue(["Eddie Naff", 2]);
 pq.enqueue(["Quincy Larson", 3]);
 pq.enqueue(["Ewa Mitulska-Wojcik", 1]);
 pq.enqueue(["Briana Swift", 2]);
-pq.printCollection();
+pq.print();
 pq.dequeue();
 pq.front();
-pq.printCollection();
+pq.print();
