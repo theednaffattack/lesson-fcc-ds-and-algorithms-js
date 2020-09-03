@@ -111,6 +111,20 @@ class BST {
     return current.data;
   }
 
+  findMinHeight(node = this.root) {
+    // If nothing has been added to the BST height is -1.
+    if (node == null) {
+      return -1;
+    }
+    let left = this.findMinHeight(node.left);
+    let right = this.findMinHeight(node.right);
+    if (left < right) {
+      return left + 1;
+    } else {
+      return right + 1;
+    }
+  }
+
   isBalanced() {
     return this.findMinHeight() >= this.findMaxHeight() - 1;
   }
