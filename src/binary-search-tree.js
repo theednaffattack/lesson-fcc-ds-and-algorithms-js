@@ -160,6 +160,29 @@ class BST {
     return false;
   }
 
+  levelOrder() {
+    const result = [];
+    const arrQueue = [];
+
+    if (this.root != null) {
+      arrQueue.push(this.root);
+
+      while (arrQueue.length > 0) {
+        let node = arrQueue.shift();
+        result.push(node.data);
+        if (node.left != null) {
+          arrQueue.push(node.left);
+        }
+        if (node.right != null) {
+          arrQueue.push(node.right);
+        }
+      }
+      return result;
+    } else {
+      return null;
+    }
+  }
+
   postOrder() {
     const result = new Array();
     function traversePostOrder(node) {
