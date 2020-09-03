@@ -89,6 +89,20 @@ class BST {
     }
     return current.data;
   }
+
+  findMaxHeight(node = this.root) {
+    if (node == null) {
+      return -1;
+    }
+    let left = this.findMaxHeight(node.left);
+    let right = this.findMaxHeight(node.right);
+    if (left > right) {
+      return left + 1;
+    } else {
+      return right + 1;
+    }
+  }
+
   findMin() {
     let current = this.root;
     while (current.left !== null) {
