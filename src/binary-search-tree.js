@@ -97,12 +97,8 @@ class BST {
     return current.data;
   }
 
-  findMax() {
-    let current = this.root;
-    while (current.right !== null) {
-      current = current.right;
-    }
-    return current.data;
+  isBalanced() {
+    return this.findMinHeight() >= this.findMaxHeight() - 1;
   }
 
   isPresent(data) {
