@@ -125,6 +125,22 @@ class BST {
     }
   }
 
+  inOrder() {
+    const result = new Array();
+
+    function traverseInOrder(node) {
+      node.left && traverseInOrder(node.left);
+      result.push(node.data);
+      node.right && traverseInOrder(node.right);
+    }
+    if (this.root == null) {
+      return null;
+    } else {
+      traverseInOrder(this.root);
+      return result;
+    }
+  }
+
   isBalanced() {
     return this.findMinHeight() >= this.findMaxHeight() - 1;
   }
