@@ -63,13 +63,109 @@ class BST {
           return null;
         }
       };
-      return searchTree(node.right);
+      return searchTree(node);
     }
+  }
+
+  findMin() {
+    let current = this.root;
+    while (current.left !== null) {
+      current = current.left;
+    }
+    return current.data;
+  }
+
+  findMax() {
+    let current = this.root;
+    while (current.right !== null) {
+      current = current.right;
+    }
+    return current.data;
+  }
+
+  find(data) {
+    let current = this.root;
+    while (current.data !== null) {
+      if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+      if (current === null) {
+        return null;
+      }
+    }
+    return current;
+  }
+
+  isPresent(data) {
+    let current = this.root;
+    while (current) {
+      if (data === current.data) {
+        return true;
+      }
+      if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return false;
+  }
+
+  remove(data) {
+    const removeNode = function (node, data) {
+      if (node == null) {
+        return null;
+      }
+      if (data === node.data) {
+        // node has no children
+        if (node.left == null && node.right == null) {
+          return null;
+        }
+
+        // node has no left child
+        if (node.left == null) {
+          return node.right;
+        }
+        // node has no right child
+        if (node.right == null) {
+          return node.left;
+        }
+        // node has two children
+        let tempNode = node.right;
+        while (tempNode.left !== null) {
+          tempNode = tempNode.left;
+        }
+        node.data = tempNode.data;
+        node.right = removeNode(node.right, tempNode.data);
+        return node;
+      } else if (data < data.node) {
+        node.left = removeNode(node.left, data);
+        return node;
+      } else {
+        node.right = removeNode(node.right, data);
+        return node;
+      }
+    };
+    this.root = removeNode(this.root, data);
   }
 }
 
 // MANUAL TEST
 
-const myBst = new BST();
+const bst = new BST();
 
-myBst.add("some data");
+bst.add(4);
+bst.add(2);
+bst.add(6);
+bst.add(1);
+bst.add(3);
+bst.add(5);
+bst.add(7);
+bst.remove(4);
+console.log(bst.findMin());
+console.log(bst.findMax());
+bst.remove(7);
+console.log(bst.findMax());
+console.log(bst.isPresent(4));
