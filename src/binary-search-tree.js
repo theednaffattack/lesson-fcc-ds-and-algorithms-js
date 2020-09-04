@@ -67,22 +67,6 @@ class BST {
     }
   }
 
-  findMin() {
-    let current = this.root;
-    while (current.left !== null) {
-      current = current.left;
-    }
-    return current.data;
-  }
-
-  findMax() {
-    let current = this.root;
-    while (current.right !== null) {
-      current = current.right;
-    }
-    return current.data;
-  }
-
   find(data) {
     let current = this.root;
     while (current.data !== null) {
@@ -98,6 +82,69 @@ class BST {
     return current;
   }
 
+  findMax() {
+    let current = this.root;
+    while (current.right !== null) {
+      current = current.right;
+    }
+    return current.data;
+  }
+
+  findMaxHeight(node = this.root) {
+    if (node == null) {
+      return -1;
+    }
+    let left = this.findMaxHeight(node.left);
+    let right = this.findMaxHeight(node.right);
+    if (left > right) {
+      return left + 1;
+    } else {
+      return right + 1;
+    }
+  }
+
+  findMin() {
+    let current = this.root;
+    while (current.left !== null) {
+      current = current.left;
+    }
+    return current.data;
+  }
+
+  findMinHeight(node = this.root) {
+    // If nothing has been added to the BST height is -1.
+    if (node == null) {
+      return -1;
+    }
+    let left = this.findMinHeight(node.left);
+    let right = this.findMinHeight(node.right);
+    if (left < right) {
+      return left + 1;
+    } else {
+      return right + 1;
+    }
+  }
+
+  inOrder() {
+    const result = new Array();
+
+    function traverseInOrder(node) {
+      node.left && traverseInOrder(node.left);
+      result.push(node.data);
+      node.right && traverseInOrder(node.right);
+    }
+    if (this.root == null) {
+      return null;
+    } else {
+      traverseInOrder(this.root);
+      return result;
+    }
+  }
+
+  isBalanced() {
+    return this.findMinHeight() >= this.findMaxHeight() - 1;
+  }
+
   isPresent(data) {
     let current = this.root;
     while (current) {
@@ -111,6 +158,61 @@ class BST {
       }
     }
     return false;
+  }
+
+  levelOrder() {
+    const result = [];
+    const arrQueue = [];
+
+    if (this.root != null) {
+      arrQueue.push(this.root);
+
+      while (arrQueue.length > 0) {
+        let node = arrQueue.shift();
+        result.push(node.data);
+        if (node.left != null) {
+          arrQueue.push(node.left);
+        }
+        if (node.right != null) {
+          arrQueue.push(node.right);
+        }
+      }
+      return result;
+    } else {
+      return null;
+    }
+  }
+
+  postOrder() {
+    const result = new Array();
+    function traversePostOrder(node) {
+      node.left && traversePostOrder(node.left);
+      node.right && traversePostOrder(node.right);
+      result.push(node.data);
+    }
+
+    if (this.root == null) {
+      return null;
+    } else {
+      traversePostOrder(this.root);
+      return result;
+    }
+  }
+
+  preOrder() {
+    const result = new Array();
+    function traversePreOrder(node) {
+      result.push(node.data);
+      node.left && traversePreOrder(node.left);
+      node.right && traversePreOrder(node.right);
+    }
+
+    if (this.root == null) {
+      return null;
+    } else {
+      traversePreOrder(this.root);
+      return result;
+    }
   }
 
   remove(data) {
