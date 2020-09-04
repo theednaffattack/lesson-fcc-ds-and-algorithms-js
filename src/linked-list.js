@@ -146,4 +146,6 @@ ll.add("Cat");
 ll.add("Fish");
 console.log(ll.size());
 console.log(ll.removeAt(3));
+console.log(ll.elementAt(3));
+console.log(ll.indexOf("Puppy"));
 console.log(ll.size());
