@@ -36,7 +36,47 @@ let MinHeap = function () {
   };
 
   this.remove = function () {
-    // do some stuff
+    let smallest = heap[1];
+    // The smallest should be the top,
+    // heap[0] is null.
+
+    if (heap.length > 2) {
+      // below: set the last node in the array to be first.
+      heap[1] = heap[heap.length - 1];
+      // below: shorten the array by one.
+      heap.splice(heap.length - 1);
+      // if there are only two nodes, it's easy
+      // just switch them if the first postion is
+      // greater than the second.
+      if (heap.length === 3) {
+        if (heap[1] > heap[2]) {
+          [heap[1], heap[2]] = [heap[2], heap[1]];
+        }
+        return smallest;
+      }
+
+      // If there are more than two items in the Heap...
+      let index = 1;
+      let left = 2 * 1;
+      let right = 2 * index + 1;
+      while (heap[index] >= heap[left] || heap[index] >= heap[right]) {
+        if (heap[left] < heap[right]) {
+          [heap[index], heap[left]] = [heap[left], heap[index]];
+          index = 2;
+        } else {
+          [heap[index], heap[right]] = [heap[right], heap[index]];
+          index = 2 * index + 1;
+        }
+        left = 2 * index;
+        right = 2 * index + 1;
+        if (heap[left] === undefined || heap[right] === undefined) {
+          break;
+        }
+      }
+    } else if (heap.length === 2) {
+      heap.splice(1, 1);
+    }
+  };
   };
 };
 
