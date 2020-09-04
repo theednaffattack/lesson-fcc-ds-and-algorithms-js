@@ -12,7 +12,8 @@
     "priority-queue": "node src/priority-queue.js",
     "queue": "node src/queue.js",
     "bst": "node src/binary-search-tree.js",
-    "linked-list": "node src/linked-list.js"
+    "linked-list": "node src/linked-list.js",
+    "trie": "node src/trie.js"
   },
   "devDependencies": {
     "eslint": "^7.7.0"
