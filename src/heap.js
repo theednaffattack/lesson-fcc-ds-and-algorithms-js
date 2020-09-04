@@ -5,11 +5,18 @@ const imgcat = require("imgcat");
 /* 
 
 https://youtu.be/t2CEgPsws3U?list=PLDn22JhUbNqaf_suvX_NYIdPkFOnFIicR&t=5251
+
+Algorithm visualization
+https://youtu.be/t2CEgPsws3U?list=PLDn22JhUbNqaf_suvX_NYIdPkFOnFIicR&t=5590
  */
+
+//  Also see: https://www.cs.usfca.edu/~galles/visualization/Heap.html
 
 // left child: i * 2
 // right child: i * 2 + 1
-// parent: i / 2
+// parent: floor(i / 2)
+// NOTE: parent is always rounded down to the nearest whole
+// number.
 
 let MinHeap = function () {
   let heap = [null];
@@ -77,6 +84,13 @@ let MinHeap = function () {
       heap.splice(1, 1);
     }
   };
+
+  this.sort = function () {
+    let result = new Array();
+    while (heap.length > 1) {
+      result.push(this.remove());
+    }
+    return result;
   };
 };
 
