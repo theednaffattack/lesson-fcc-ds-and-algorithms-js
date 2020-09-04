@@ -7,6 +7,8 @@ used to store associative data structures.
 A trie stores data in steps. Each step is a node in teh Trie, often used to 
 store words. Example use case = validate a word is in a dictionary. Each 
 node would represent a letter of a word. 
+
+https://youtu.be/t2CEgPsws3U?list=PLDn22JhUbNqaf_suvX_NYIdPkFOnFIicR&t=4499
  */
 
 let Node = function () {
@@ -37,4 +39,4 @@ let Trie = function () {
 };
 
 // NOTE: ti = Trie Instance
-const ti = Trie();
+// const ti = Trie();
