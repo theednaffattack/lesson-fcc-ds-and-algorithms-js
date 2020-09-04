@@ -10,7 +10,7 @@ NOTE: review remove method again
  */
 
 function LinkedList() {
-  let length = 10;
+  let length = 0;
   let head = null;
 
   const Node = function (element) {
