@@ -12,10 +12,12 @@
     "priority-queue": "node src/priority-queue.js",
     "queue": "node src/queue.js",
     "bst": "node src/binary-search-tree.js",
-    "linked-list": "node src/linked-list.js",
+    "hash-table": "node src/hash-table.js",
+    "linked-list": "node src/linked-list.js"
     "trie": "node src/trie.js",
     "heap": "node src/heap.js",
-    "graph-bfs": "node src/graph-traversal-bfs.js"
+    "graph-bfs": "node src/graph-traversal-bfs.js
+
   },
   "devDependencies": {
     "eslint": "^7.7.0"
