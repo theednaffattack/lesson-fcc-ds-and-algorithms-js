@@ -30,6 +30,9 @@ function bfs(graph, root) {
     current = queue.shift();
 
     const currentConnected = graph[current];
+
+    // Keep track of a list of connected nodes to the
+    // current node.
     const neighborIndex = [];
     // https://youtu.be/t2CEgPsws3U?list=PLDn22JhUbNqaf_suvX_NYIdPkFOnFIicR&t=6683
     let index = currentConnected.indexOf(1);
