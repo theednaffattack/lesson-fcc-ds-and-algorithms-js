@@ -14,8 +14,15 @@
     "bst": "node src/binary-search-tree.js",
     "hash-table": "node src/hash-table.js",
     "linked-list": "node src/linked-list.js"
+    "trie": "node src/trie.js",
+    "heap": "node src/heap.js",
+    "graph-bfs": "node src/graph-traversal-bfs.js
+
   },
   "devDependencies": {
     "eslint": "^7.7.0"
+  },
+  "dependencies": {
+    "imgcat": "^2.3.0"
   }
 }
