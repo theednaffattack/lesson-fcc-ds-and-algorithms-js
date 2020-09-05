@@ -29,18 +29,46 @@ function bfs(graph, root) {
     // beginning this is the root node.
     current = queue.shift();
 
+    // get all the nodes connected to the current node
+    // each index of the graph is an array that shows
+    // us what nodes are connected to root node associated
+    // with that index.
     const currentConnected = graph[current];
 
     // Keep track of a list of connected nodes to the
     // current node.
     const neighborIndex = [];
     // https://youtu.be/t2CEgPsws3U?list=PLDn22JhUbNqaf_suvX_NYIdPkFOnFIicR&t=6683
+    // get the first node connected to the current node
+    // It's set to 1 here because the number 1
+    // signifies connection in our array to another node.
+    // The number's numerical value is inconsequential.
     let index = currentConnected.indexOf(1);
+    // indexOf's "not found" returns -1
     while (index != -1) {
+      // if it's not connected it's a neighbor
       neighborIndex.push(index);
+      // search for the next connected node
+      // start the indexOf search +1 to get the
+      // next node.
       index = currentConnected.indexOf(1, index + 1);
     }
+    for (let j = 0; j < neighborIndex.length; j++) {
+      // 'nodesLength' was initialized to Infinity at every
+      // position. If item in 'nodesLength' indexed by the 'neighborIndex'
+      // item indexed by or loop index 'j' is STILL Infinity we'll
+      // set the distance for it now.
+      if (nodesLength[neighborIndex[j]] == Infinity) {
+        // set it to the value in 'nodesLength' array (the current val)
+        // plus 1.
+        nodesLength[neighborIndex[j]] = nodesLength[current] + 1;
+        // push this neighbor to the queue so we can
+        // check its neighbors.
+        queue.push(neighborIndex[j]);
+      }
+    }
   }
+  return nodesLength;
 }
 
 const exBFSGraph = [
